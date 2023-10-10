@@ -1,18 +1,19 @@
 const MenuItem = require('../models/MenuItem');
 
-module.exports = {
-    createMenuItem,
-    getMenuItems,
-    getMenuItemById,
-    editMenuItem,
-    deleteMenuItem
-};
+// module.exports = {
+//     createMenuItem,
+//     getMenuItems,
+//     getMenuItemById,
+//     editMenuItem,
+//     deleteMenuItem
+// };
 
 
 const createMenuItem = async(req, res) => {
    
     try {
         const menuItem = await MenuItem.create(req.body);
+        console.log('Created menu item:', menuItem);
         res.json(menuItem);
     } catch(error) {
         console.error(error);
@@ -22,7 +23,7 @@ const createMenuItem = async(req, res) => {
 
 const getMenuItems = async(req, res) => {
     try {
-        const menuItems =  await MenuItem.findAll();
+        const menuItems =  await MenuItem.find();
         res.json(menuItems);
     } catch(error) {
         console.error(error);
@@ -45,7 +46,7 @@ const getMenuItemById = async (req, res) => {
 };
 
 
-const editMenuItem = async (req, req) => {
+const editMenuItem = async (req, res) => {
     const { id } = req.params;
     const { name, description, price } = req.body;
     try {
@@ -79,3 +80,11 @@ const deleteMenuItem = async (req, res) => {
     }
 
 };
+
+module.exports = {
+    createMenuItem,
+    getMenuItems,
+    getMenuItemById,
+    editMenuItem,
+    deleteMenuItem
+}

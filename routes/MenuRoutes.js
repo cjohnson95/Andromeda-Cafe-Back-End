@@ -9,8 +9,9 @@ const {
   deleteMenuItem,
 } = require("../controllers/MenuController");
 
-router.post("/menu/add", createMenuItem);
 router.get("/menu", getMenuItems);
+router.post("/menu/add", createMenuItem);
+
 router.get("/menu/:id", getMenuItemById);
 router.put("/menu/edit/:id", editMenuItem);
 router.delete("/menu/delete/:id", deleteMenuItem);
